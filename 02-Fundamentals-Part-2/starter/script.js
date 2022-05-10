@@ -15,8 +15,8 @@ const dolphinsAverage = calcAverage(dolphinsScores);
 
 const koalasAverage = calcAverage(koalasScores);
 
-function checkWinner(avgDolphins, avgKoalas){
-    let winner, winnerScore, loserScore;
+const checkWinner = (avgDolphins, avgKoalas) => {
+    let winner, winnerScore, loserScore, result;
 
     if(avgDolphins > avgKoalas && avgDolphins >= 2 * avgKoalas){
         winner = "Dolphins"
@@ -29,12 +29,29 @@ function checkWinner(avgDolphins, avgKoalas){
     }
 
     if(winner){
-        console.log(`${winner} win (${winnerScore} vs. ${loserScore})`);
+        result = `${winner} win (${winnerScore} vs. ${loserScore})`;
     } else {
-        console.log("No ones win");
+        result = "No ones win";
     }
+
+    return result;
 }
 
-checkWinner(dolphinsAverage, koalasAverage);
+console.log(checkWinner(dolphinsAverage, koalasAverage));
 
+
+// challange 2
+
+const bills = [125, 555, 44];
+
+const calcTip = (bill) => bill * ((bill >= 50 && bill <= 300 ? 15 : 20) / 100);
+
+const tips = [calcTip(bills[0]), calcTip(bills[1]),calcTip(bills[2])];
+
+const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+for(let i = 0; i < bills.length; i++){
+    console.log
+    (`The bill was ${bills[i]}, the tip was ${tips[i]}, and the total value ${total[i]}`);
+}
 
