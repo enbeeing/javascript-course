@@ -101,5 +101,3 @@ const avgTotal = calcAverage(allTotal);
 
 console.log(allBills, allTips, allTotal);
 console.log(`Average total: ${avgTotal}`);
-
-
