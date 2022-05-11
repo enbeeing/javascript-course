@@ -55,3 +55,31 @@ for(let i = 0; i < bills.length; i++){
     (`The bill was ${bills[i]}, the tip was ${tips[i]}, and the total value ${total[i]}`);
 }
 
+
+// challange 3
+
+function Person(firstName, lastName, height, weight){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = function() 
+            { return `${this.firstName} ${this.lastName}`; };
+    this.height = height;
+    this.weight = weight;
+    this.calcBMI = function() { return this.weight / (this.height * this.height); };
+}
+
+const mark = new Person("Mark", "Miller", 1.69, 78);
+
+const john = new Person("John", "Smith", 1.95, 92);
+
+const highestBMI = mark.calcBMI() > john.calcBMI() ? 
+    mark : john;
+
+const lowestBMI = mark.calcBMI() < john.calcBMI() ? 
+    mark : john;
+
+console.log(`${highestBMI.fullName()}'s BMI (${highestBMI.calcBMI().toFixed(1)}) is higher than ${lowestBMI.fullName()}'s (${lowestBMI.calcBMI().toFixed(1)})`);
+
+
+// challange 4
+
