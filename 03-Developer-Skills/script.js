@@ -10,9 +10,9 @@ const celsiusSymbol = ``;
 function printForecast(arr) {
     let result = "";
     
-    for(let i = 0; i < arr.length; i++) {
-        result += ` ... ${arr[i]}°C in ${i + 1} days`;
-    }
+    arr.forEach((element, index) => {
+        result += ` ... ${element}°C in ${index + 1} days`;
+    });
 
     return result;
 }
