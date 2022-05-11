@@ -1,6 +1,6 @@
 'use strict';
 
-// challange 1
+// challenge 1
 
 let markHeight = 1.69, markMass = 78;
 markHeight = 1.88, markMass = 95;
@@ -21,7 +21,7 @@ function getBMIResult(height, mass){
 
 console.log(markHigherBMI);
 
-// challange 2
+// challenge 2
 
 if(markBMI > johnBMI){
     console.log(`Mark's BMI (${markBMI.toFixed(2)}) is higher than John's (${johnBMI.toFixed(2)})!`);
@@ -29,7 +29,7 @@ if(markBMI > johnBMI){
     console.log(`John's BMI (${johnBMI.toFixed(2)}) is higher than Marks's (${markBMI.toFixed(2)})!`);
 }
 
-// challange 3
+// challenge 3
 
 let dolphinsScores = [96,108,89];
 dolphinsScores = [97,112,101];
@@ -45,9 +45,9 @@ const koalasAverage = getAverageScore(koalasScores);
 let winner = "";
 
 function getAverageScore(arr){
-    const sum = [...arr].reduce((a,b) => a + b, 0);
+    const sum = arr.reduce((a,b) => a + b, 0);
 
-    return sum / [...arr].length;
+    return sum / arr.length;
 }
 
 if(dolphinsAverage < 100 || koalasAverage < 100){
@@ -64,7 +64,7 @@ if(dolphinsAverage < 100 || koalasAverage < 100){
 
 console.log(winner);
 
-// challange 4
+// challenge 4
 
 let bill = 275;
 bill = 40;

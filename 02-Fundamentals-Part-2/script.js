@@ -1,6 +1,6 @@
 'use strict';
 
-// challange 1
+// challenge 1
 
 let dolphinsScores = [44,23,71];
 dolphinsScores = [85,54,41];
@@ -9,7 +9,7 @@ let koalasScores = [65,54,49];
 koalasScores = [23,34,27];
 
 const calcAverage = (arr) => 
-    ([...arr].reduce((a,b) => a + b, 0)) / [...arr].length;
+    (arr.reduce((a,b) => a + b, 0)) / arr.length;
 
 const dolphinsAverage = calcAverage(dolphinsScores);
 
@@ -40,7 +40,7 @@ const checkWinner = (avgDolphins, avgKoalas) => {
 console.log(checkWinner(dolphinsAverage, koalasAverage));
 
 
-// challange 2
+// challenge 2
 
 const bills = [125, 555, 44];
 
@@ -56,13 +56,13 @@ for(let i = 0; i < bills.length; i++){
 }
 
 
-// challange 3
+// challenge 3
 
 function Person(firstName, lastName, height, weight){
     this.firstName = firstName;
     this.lastName = lastName;
     this.fullName = function() 
-            { return `${this.firstName} ${this.lastName}`; };
+        { return `${this.firstName} ${this.lastName}`; };
     this.height = height;
     this.weight = weight;
     this.calcBMI = function() 
@@ -82,7 +82,7 @@ const lowestBMI = mark.calcBMI() < john.calcBMI() ?
 console.log(`${highestBMI.fullName()}'s BMI (${highestBMI.calcBMI().toFixed(1)}) is higher than ${lowestBMI.fullName()}'s (${lowestBMI.calcBMI().toFixed(1)})`);
 
 
-// challange 4
+// challenge 4
 
 const allBills = [22,295,176,440,37,105,10,1100,86,52];
 
@@ -97,6 +97,7 @@ for(let i = 0; i < allBills.length; i++) {
     allTotal.push(allBills[i] + tip);
 }
 
+// uses function on line 11 under challange 1
 const avgTotal = calcAverage(allTotal);
 
 console.log(allBills, allTips, allTotal);
