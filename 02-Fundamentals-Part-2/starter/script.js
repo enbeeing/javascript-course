@@ -65,7 +65,8 @@ function Person(firstName, lastName, height, weight){
             { return `${this.firstName} ${this.lastName}`; };
     this.height = height;
     this.weight = weight;
-    this.calcBMI = function() { return this.weight / (this.height * this.height); };
+    this.calcBMI = function() 
+        { return this.weight / (this.height * this.height); };
 }
 
 const mark = new Person("Mark", "Miller", 1.69, 78);
@@ -82,4 +83,23 @@ console.log(`${highestBMI.fullName()}'s BMI (${highestBMI.calcBMI().toFixed(1)})
 
 
 // challange 4
+
+const allBills = [22,295,176,440,37,105,10,1100,86,52];
+
+const allTips = [];
+
+const allTotal = [];
+
+for(let i = 0; i < allBills.length; i++) {
+    let tip = calcTip(allBills[i]);
+    
+    allTips.push(tip);
+    allTotal.push(allBills[i] + tip);
+}
+
+const avgTotal = calcAverage(allTotal);
+
+console.log(allBills, allTips, allTotal);
+console.log(`Average total: ${avgTotal}`);
+
 
