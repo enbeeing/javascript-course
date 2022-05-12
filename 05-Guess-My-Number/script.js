@@ -17,13 +17,18 @@ const noValueMessage = `⛔ No number!`;
 const tooHighMessage = `📈 Too high!`;
 const tooLowMessage = `📉 Too low!`;
 const gameOverMessage = `💥 You lost the game!`;
+const numberDispayDeafult = "?";
+
+// classes for css
+const winClass = 'win';
+const loseClass = 'lose';
 
 // random numbergenerater 
 const randomNumberBetween = (min, max) => Math.trunc(Math.random() * max) + min;
 
 // game rules
-const defaultScore = 20;
-let correctNumber = randomNumberBetween(1,20), score = defaultScore;
+const minNumber = 1, maxNumber = 20, defaultScore = 20, loseNumber = Number(0);
+let correctNumber = randomNumberBetween(minNumber,maxNumber), score = defaultScore;
 let isWin = false, isGameOver = false;
 let guessInput, highscore;
 
@@ -41,39 +46,39 @@ function checkNumber(){
             displayMessage.textContent = noValueMessage;
         } else if (isWin){
             playerWins();
-        } else if (score > 1){
-            if (guessInput > correctNumber){
-                displayMessage.textContent = tooHighMessage;
-            } else if (guessInput < correctNumber){
-                displayMessage.textContent = tooLowMessage;
-            }
-            score--;
         } else {
-            gameOver();
-        }
+            displayMessage.textContent = guessInput > correctNumber 
+            ? tooHighMessage : tooLowMessage;
+
+            score--;
+
+            if(score === loseNumber){
+                gameOver();
+            }
+        } 
         scoreDisplay.textContent = score;
     }
 }
 
 function resetGame(){
     if(isWin){
-        body.classList.remove('win');
-        numberDisplay.classList.remove('win');
+        body.classList.remove(winClass);
+        numberDisplay.classList.remove(winClass);
     } 
-    if(isGameOver){
-        body.classList.remove('lose');
-        numberDisplay.classList.remove('lose');
+    if (isGameOver){
+        body.classList.remove(loseClass);
+        numberDisplay.classList.remove(loseClass);
     }
 
     // set and display default values
     score = defaultScore;
     scoreDisplay.textContent = score;
-    numberDisplay.textContent = "?";
+    numberDisplay.textContent = numberDispayDeafult;
     displayMessage.textContent = defaultMessage;
 
     isWin = false, isGameOver = false;
-    // give new number
-    correctNumber = randomNumberBetween(1,20);
+    // give new correctNumber
+    correctNumber = randomNumberBetween(minNumber,maxNumber);
 }
 
 // win and lose funtions
@@ -83,25 +88,22 @@ function playerWins(){
     numberDisplay.textContent = correctNumber;
 
     // set and display highscore
-    if(!highscore){
+    if(!highscore || highscore < score){
         highscore = score;
-    } else if (highscore < score) {
-        highscore = score;
-    }
+    } 
     highscoreDisplay.textContent = highscore;
 
     // add class and style in css
-    body.classList.add('win');
-    numberDisplay.classList.add('win');
+    body.classList.add(winClass);
+    numberDisplay.classList.add(winClass);
 }
 
 function gameOver(){
     displayMessage.textContent = gameOverMessage;
     numberDisplay.textContent = correctNumber;
-    score--;
     isGameOver = true;
 
     // add class and style in css
-    body.classList.add('lose');
-    numberDisplay.classList.add('lose');
+    body.classList.add(loseClass);
+    numberDisplay.classList.add(loseClass);
 }
