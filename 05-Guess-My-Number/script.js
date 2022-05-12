@@ -2,13 +2,13 @@
 
 // dom elements
 const body = document.querySelector('body');
-// btns
-const checkBtn = body.querySelector('.check');
-const againBtn = body.querySelector('.again');
 const displayMessage = body.querySelector('.message');
 const scoreDisplay = body.querySelector('.score');
 const highscoreDisplay = body.querySelector('.highscore');
 const numberDisplay = body.querySelector('.number');
+// btns
+const checkBtn = body.querySelector('.check');
+const againBtn = body.querySelector('.again');
 
 // messages to player
 const defaultMessage = "Start guessing...";
@@ -51,20 +51,18 @@ function checkNumber(){
         } else {
             gameOver();
         }
+        scoreDisplay.textContent = score;
     }
-    scoreDisplay.textContent = score;
 }
 
 function resetGame(){
     if(isWin){
         body.classList.remove('win');
         numberDisplay.classList.remove('win');
-        console.log('win reset');
     } 
     if(isGameOver){
         body.classList.remove('lose');
         numberDisplay.classList.remove('lose');
-        console.log('lose reset');
     }
 
     // set and display default values
