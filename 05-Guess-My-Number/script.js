@@ -38,10 +38,10 @@ againBtn.addEventListener('click', resetGame);
 
 // btn functions
 function checkNumber(){
-    guessInput = body.querySelector('.guess').value;
-    isWin = correctNumber === Number(guessInput);
-
     if(!isGameOver){
+        guessInput = body.querySelector('.guess').value;
+        isWin = correctNumber === Number(guessInput);
+
         if(!guessInput){
             displayMessage(messageDisplay, noValueMessage);
         } else if (isWin){
