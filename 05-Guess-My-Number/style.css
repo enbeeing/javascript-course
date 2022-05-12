@@ -16,13 +16,24 @@ body {
   color: #eee;
   background-color: #222;
 }
+
+/* win style */
 body.win{
   background-color: #60b347;
 }
 
-/* body.lose{
-  background-color: #60b347;
-} */
+.number.win{
+  width:  30rem;
+}
+
+/* lose style */
+body.lose{
+  background-color: #c9373e;
+}
+
+.number.lose{
+  width:  30rem;
+}
 
 /* LAYOUT */
 header {
