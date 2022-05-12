@@ -2,7 +2,7 @@
 
 // dom elements
 const body = document.querySelector('body');
-const displayMessage = body.querySelector('.message');
+const messageDisplay = body.querySelector('.message');
 const scoreDisplay = body.querySelector('.score');
 const highscoreDisplay = body.querySelector('.highscore');
 const numberDisplay = body.querySelector('.number');
@@ -43,12 +43,12 @@ function checkNumber(){
 
     if(!isGameOver){
         if(!guessInput){
-            displayMessage.textContent = noValueMessage;
+            displayMessage(messageDisplay, noValueMessage);
         } else if (isWin){
             playerWins();
         } else {
-            displayMessage.textContent = guessInput > correctNumber 
-            ? tooHighMessage : tooLowMessage;
+            displayMessage(messageDisplay , guessInput > correctNumber 
+            ? tooHighMessage : tooLowMessage)
 
             score--;
 
@@ -56,25 +56,25 @@ function checkNumber(){
                 gameOver();
             }
         } 
-        scoreDisplay.textContent = score;
+        displayMessage(scoreDisplay, score);
     }
 }
 
 function resetGame(){
     if(isWin){
-        body.classList.remove(winClass);
-        numberDisplay.classList.remove(winClass);
+        removeClass(body, winClass);
+        removeClass(numberDisplay, winClass);
     } 
     if (isGameOver){
-        body.classList.remove(loseClass);
-        numberDisplay.classList.remove(loseClass);
+        removeClass(body, loseClass);
+        removeClass(numberDisplay, loseClass);
     }
 
     // set and display default values
     score = defaultScore;
-    scoreDisplay.textContent = score;
-    numberDisplay.textContent = numberDispayDeafult;
-    displayMessage.textContent = defaultMessage;
+    displayMessage(scoreDisplay, score);
+    displayMessage(numberDisplay, numberDispayDeafult);
+    displayMessage(messageDisplay, defaultMessage);
 
     isWin = false, isGameOver = false;
     // give new correctNumber
@@ -84,26 +84,38 @@ function resetGame(){
 // win and lose funtions
 
 function playerWins(){
-    displayMessage.textContent = correctMessage;
-    numberDisplay.textContent = correctNumber;
+    displayMessage(messageDisplay,correctMessage);
+    displayMessage(numberDisplay, correctNumber);
 
     // set and display highscore
     if(!highscore || highscore < score){
         highscore = score;
     } 
-    highscoreDisplay.textContent = highscore;
+    displayMessage(highscoreDisplay, highscore);
 
-    // add class and style in css
-    body.classList.add(winClass);
-    numberDisplay.classList.add(winClass);
+    addClass(body, winClass);
+    addClass(numberDisplay,winClass);
 }
 
 function gameOver(){
-    displayMessage.textContent = gameOverMessage;
-    numberDisplay.textContent = correctNumber;
+    displayMessage(messageDisplay,gameOverMessage);
+    displayMessage(numberDisplay,correctNumber);
     isGameOver = true;
 
-    // add class and style in css
-    body.classList.add(loseClass);
-    numberDisplay.classList.add(loseClass);
+    addClass(body,loseClass);
+    addClass(numberDisplay,loseClass);
+}
+
+
+// change textcontent of element
+function displayMessage(element, mesasge){
+    element.textContent = mesasge;
+}
+
+// funtions to add/remove element class
+function addClass(element, classToAdd){
+    element.classList.add(classToAdd);
+}
+function removeClass(element, classToRemove){
+    element.classList.remove(classToRemove);
 }
