@@ -19,9 +19,16 @@ const hiddenClass = 'hidden';
 const activePlayerClass = 'player--active';
 const winnerClass = 'player--winner';
 
-// random numbergenerater 
+// const function expressions
 const randomNumberBetween = (min, max) => Math.trunc(Math.random() * max) + min;
 
+const displayCurrentPlayersCurrentScore = () =>
+    displayContent(currentPlayer.currentScoreEL, currentPlayer.currentScore);
+
+const resetCurrentScore = () => currentPlayer.currentScore = defaultScore;
+
+const displayContent = (element, mesasge) => element.textContent = mesasge;
+    
 // default game values 
 const defaultScore = 0;
 const minRoll = 1, maxRoll = 6;
@@ -42,6 +49,9 @@ function Player(id, name, playerEL, score, scoreEL, currentScore, currentScoreEL
 let player0 = new Player(0,'Player 1', player0EL,0,score0EL,0,currentScore0EL);
 let player1 = new Player(1,'Player 2',player1EL,0,score1EL,0,currentScore1EL);
 let currentPlayer = player0;
+
+
+
 
 // eventlisteners
 btnRoll.addEventListener('click', rollDice);
@@ -110,24 +120,12 @@ function newGame(){
     diceNum = defaultScore;
 }
 
-// functions called inside btn functions
-function displayCurrentPlayersCurrentScore(){
-    displayContent(currentPlayer.currentScoreEL, currentPlayer.currentScore);
-}
-
+// switch player
 function switchCurrentPlayer(){
     currentPlayer = currentPlayer === player0 ? player1 : player0;
 
     player0EL.classList.toggle(activePlayerClass);
     player1EL.classList.toggle(activePlayerClass);
-}
-
-function resetCurrentScore(){
-    currentPlayer.currentScore = defaultScore;
-}
-
-function displayContent(element, mesasge){
-    element.textContent = mesasge;
 }
 
 // winner found!
