@@ -43,11 +43,11 @@ function checkNumber(){
         isWin = correctNumber === Number(guessInput);
 
         if(!guessInput){
-            displayMessage(messageDisplay, noValueMessage);
+            displayContent(messageDisplay, noValueMessage);
         } else if (isWin){
             playerWins();
         } else {
-            displayMessage(messageDisplay , guessInput > correctNumber 
+            displayContent(messageDisplay , guessInput > correctNumber 
             ? tooHighMessage : tooLowMessage)
 
             score--;
@@ -56,7 +56,7 @@ function checkNumber(){
                 gameOver();
             }
         } 
-        displayMessage(scoreDisplay, score);
+        displayContent(scoreDisplay, score);
     }
 }
 
@@ -72,9 +72,9 @@ function resetGame(){
 
     // set and display default values
     score = defaultScore;
-    displayMessage(scoreDisplay, score);
-    displayMessage(numberDisplay, numberDispayDeafult);
-    displayMessage(messageDisplay, defaultMessage);
+    displayContent(scoreDisplay, score);
+    displayContent(numberDisplay, numberDispayDeafult);
+    displayContent(messageDisplay, defaultMessage);
 
     isWin = false, isGameOver = false;
     // give new correctNumber
@@ -84,22 +84,22 @@ function resetGame(){
 // win and lose funtions
 
 function playerWins(){
-    displayMessage(messageDisplay,correctMessage);
-    displayMessage(numberDisplay, correctNumber);
+    displayContent(messageDisplay,correctMessage);
+    displayContent(numberDisplay, correctNumber);
 
     // set and display highscore
     if(!highscore || highscore < score){
         highscore = score;
     } 
-    displayMessage(highscoreDisplay, highscore);
+    displayContent(highscoreDisplay, highscore);
 
     addClass(body, winClass);
     addClass(numberDisplay,winClass);
 }
 
 function gameOver(){
-    displayMessage(messageDisplay,gameOverMessage);
-    displayMessage(numberDisplay,correctNumber);
+    displayContent(messageDisplay,gameOverMessage);
+    displayContent(numberDisplay,correctNumber);
     isGameOver = true;
 
     addClass(body,loseClass);
@@ -108,7 +108,7 @@ function gameOver(){
 
 
 // change textcontent of element
-function displayMessage(element, mesasge){
+function displayContent(element, mesasge){
     element.textContent = mesasge;
 }
 
